@@ -135,3 +135,16 @@ for i in range(13):
 #textL = font1.render("Click the Load button.", True, (0, 0, 0))
 #textLB = font1.render("LOAD", True, (255, 255, 255))
 #textME = font1.render("MAIN    EXIT", True, (255, 255, 255))
+
+   mouse = pygame.mouse.get_pos()
+    #print(mouse)
+
+    if 50+200 > mouse[0] > 50 and 300+100 > mouse[1] > 300:
+        pygame.draw.rect(background, white, (50, 300, 200, 100))
+    else:
+        pygame.draw.rect(background, yellow, (50, 300, 200, 100))
+
+    smallText = pygame.font.Font("freesansbold.ttf", 30)
+    textSurf, textRect = text_objects("Upload Image", smallText)
+    textRect.center = ((50+(200/2)), (300+(100/2)))    #to center image
+    background.blit(textSurf, textRect)
