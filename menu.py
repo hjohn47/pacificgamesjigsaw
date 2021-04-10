@@ -7,6 +7,7 @@ import tmain
 import sys
 import subprocess
 import platform
+from pygame.locals import *
 
 #create button for directions text file
 #create button to upload image
@@ -21,7 +22,7 @@ size = (850,880)
 window = pygame.display.set_mode(size, pygame.RESIZABLE)
 pygame.display.set_caption('Pacific Games: Slide Puzzle')
 
-icon = pygame.image.load("icon.png").convert_alpha()
+icon = pygame.image.load("pacificicon.png").convert_alpha()
 pygame.display.set_icon(icon)
 
 background = pygame.image.load("MAIN.jpg").convert()
@@ -52,11 +53,11 @@ def button(msg, x, y, w, h, ic, ac, action=None):   #ic inactive color, ac activ
             if action == "instructionsfile":
                 #open in wordpad for windows and textedit for mac
                 if platform.system() == 'Darwin':  # macOS
-                    subprocess.call(('open', "readme.md"))    #could also use text file
+                    subprocess.call(('open', "instructionstest.pdf"))    #could also use text file
                 elif platform.system() == 'Windows':  # Windows
-                    os.startfile("readme.md")
+                    os.startfile("instructionstest.pdf")
                 else:  # linux variants
-                    subprocess.call(('xdg-open', "readme.md"))
+                    subprocess.call(('xdg-open', "instructionstest.pdf"))
 
     else:
         pygame.draw.rect(background, ic, (x, y, w, h))
@@ -83,12 +84,6 @@ def puzzlestext(msg, x, y, w, h, c):   #button color (not real button just text)
     #textSurf, textRect = text_objects(text, smallText)
     #textRect.center = ((x + (w / 2)), (y + (h / 2)))  # to center words on rect
     #background.blit(textSurf, textRect)
-
-#text1 = "Welcome to Pacific Game's Jigsaw puzzle!"
-#text2 = "This game is meant to be fu, and help ease the stress of daily life."
-#text3 = "To upload an image to use for a puzzle, press the 'upload image' button."
-#text4 = "To browse the puzzles we already have, use the ‘next’ and ‘back’ buttons."
-#text5 = "To get out of the instructions, click anywhere on the background."
 
 
 def gameloop():
