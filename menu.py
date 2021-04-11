@@ -3,7 +3,6 @@ import random
 import math
 from pygame import mixer
 import os
-import tmain
 import sys
 import subprocess
 import platform
@@ -14,13 +13,14 @@ from pygame.locals import *
 #create button on bottom to show different puzzles for user to solve
 #check if clicked buttons
 #use arrow keys to see puzzles already uploaded
+#if have time and ability, maybe have ability for user to save and finish later
 
 pygame.init()
 
 size = (850,880)
 #screen = pygame.display.set_mode((850,880))
 window = pygame.display.set_mode(size, pygame.RESIZABLE)
-pygame.display.set_caption('Pacific Games: Slide Puzzle')
+pygame.display.set_caption('Pacific Games: Jigsaw Puzzle')
 
 icon = pygame.image.load("pacificicon.png").convert_alpha()
 pygame.display.set_icon(icon)
@@ -30,6 +30,11 @@ background = pygame.image.load("MAIN.jpg").convert()
 yellow = (255,252,187)
 white = (255,255,255)
 black = (0,0,0)
+
+mixer.music.load("Relaxing_Green_Nature.mp3")
+mixer.music.play(-1)                #play on loop
+
+#maybe allow user to pause and play music using space bar?
 
 ###########################################################
 
@@ -100,16 +105,14 @@ def gameloop():
         button("Upload Image", 50, 300, 200, 100, yellow, white) #"upload")
         button("Instructions", 50, 150, 200, 100, yellow, white, "instructionsfile")
         puzzlestext("Puzzles", 365, 780, 200, 60, yellow)
-        button("Back", 225, 780, 100, 60, yellow, white)
-        button("Next", 600, 780, 100, 60, yellow, white)
+        button("Back", 225, 780, 100, 60, yellow, white)  #back button
+        button("Next", 600, 780, 100, 60, yellow, white)  #next button
 
 
         pygame.display.update()
 
 gameloop()
 
-
-#use os and let user input path for image they want to upload
 
 
 
